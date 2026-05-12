@@ -1,0 +1,24 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "home_automation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rasyidannas/courses-mqtt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Rasyidannas/courses-mqtt/issues"
+  },
+  "homepage": "https://github.com/Rasyidannas/courses-mqtt#readme",
+  "dependencies": {
+    "mqtt": "^5.15.1"
+  }
+}

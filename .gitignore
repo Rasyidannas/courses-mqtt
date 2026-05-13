@@ -2,3 +2,4 @@ python_certificates
 .venv
 __pycache__
 /node_modules
+.env

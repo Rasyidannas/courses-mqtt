@@ -6,16 +6,30 @@ Publisher: Packt Publishing Ltd. - http://www.packtpub.com
 */
 
 var mqtt = require("mqtt")
+var fs = require("fs") // Add fs to read certificate files
+var path = require("path")
 
+require("dotenv").config();
 
 // Replace with the host name for the MQTT Server
 var host = "192.168.8.129"
 // Replace with the port number for MQTT over WebSockets the MQTT Server
 var port = 9001
 // If we want to work with TLS, we must use the next line
+// Paths to your certificates
+const certDir = path.join(__dirname, "..", "certificates")
+const KEY = fs.readFileSync(path.join(certDir, process.env.KEY))
+const CERT = fs.readFileSync(path.join(certDir, process.env.CERT))
+const CA = fs.readFileSync(path.join(certDir, process.env.CA))
+var options = {
+    key: KEY,
+    cert: CERT,
+    ca: CA,
+    rejectUnauthorized: false // Set to false if using self-signed certs without full chain
+}
 // because we must use wss:// instead of ws://
 //var client = mqtt.connect("wss://" + host + ":" + port)
-var client = mqtt.connect("ws://" + host + ":" + port)
+var client = mqtt.connect("wss://" + host + ":" + port, options)
 
 var ledCommandBaseTopic = "home/leds/"
 var ledResultBaseTopic = "home/results/leds/"
@@ -28,7 +42,7 @@ client.on("connect", function () {
     }
     client.subscribe(topicFilters)
 })
- 
+
 client.on('message', function (topic, message) {
     // message is Buffer 
     var payloadString = message.toString()

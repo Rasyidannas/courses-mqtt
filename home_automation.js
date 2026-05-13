@@ -23,8 +23,7 @@ APP.HomeAutomation.Manager = {
         mqttVersion: 4,
         // For TLS security, you just need to set useSSL to True
         // and install the necessary certificates
-        // useSSL: true,
-        useSSL: false,
+        useSSL: true,
         cleanSession: true
     },
 

@@ -3,3 +3,6 @@
 2. Try change the color
 3. Then run leds_control.js
 4. See the message after changed color in home_automation.html
+
+# Adding TLS 
+1. Add `ca.crt` from mosquitto.conf to browser in trusted certificates
